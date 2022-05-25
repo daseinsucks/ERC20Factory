@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.6.0",
+    "@truffle/hdwallet-provider": "^2.0.8",
+    "dotenv": "^16.0.1",
+    "truffle": "^5.5.15",
+    "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "name": "erc20telegrambot",
+  "version": "1.0.0",
+  "description": "ERC20Factory operating connected with telegram bot",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
