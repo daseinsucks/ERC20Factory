@@ -1,0 +1,11 @@
+> transaction hash:    0x65de160ef5dee75efeddab3090052b0f705a0c72232cca170d2ced59b03c9eab
+   > Blocks: 2            Seconds: 30
+   > contract address:    0xAf5B8690245087a57128ec9543931574fDfAB4f1
+   > block number:        7057977
+   > block timestamp:     1655213601
+   > account:             0xc905803BbC804fECDc36850281fEd6520A346AC5
+   > balance:             0.070956235787560425
+   > gas used:            4204959 (0x40299f)
+   > gas price:           1.504086259 gwei
+   > value sent:          0 ETH
+   > total cost:          0.006324621051558381 ETH

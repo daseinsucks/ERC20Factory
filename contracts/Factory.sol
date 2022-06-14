@@ -7,9 +7,7 @@ import "./CreatedERC20Votes.sol";
 contract Factory {
 
 
-event ERC20Created(address tokenAddress);
-event ERC20SnapshotCreated(address tokenAddress);
-event ERC20VotesCreated(address tokenAddress);
+event tokenCreated(address tokenAddress);
 
 constructor() public {}
 
@@ -20,14 +18,16 @@ function deployToken (
         uint256 tokenType
 
 ) public returns (address) {
+    uint totalSupply_ = totalSupply * 1e18;
+
     if (tokenType == 0) {
-   _deployNewERC20(name, symbol, totalSupply);
+   _deployNewERC20(name, symbol, totalSupply_);
 
 } else  if (tokenType == 1) {
-   _deployNewERC20Snapshot(name, symbol, totalSupply);
+   _deployNewERC20Snapshot(name, symbol, totalSupply_);
 
 } else  if (tokenType == 2) {
-   _deployNewERC20Votes(name, symbol, totalSupply);
+   _deployNewERC20Votes(name, symbol, totalSupply_);
 }
 }
 
@@ -43,7 +43,7 @@ function deployToken (
             totalSupply,
             msg.sender
         );
-        emit ERC20Created(address(token));
+        emit tokenCreated(address(token));
 
         return address(token);
     }
@@ -60,7 +60,7 @@ function deployToken (
             totalSupply,
             msg.sender
         );
-        emit ERC20SnapshotCreated(address(token));
+        emit tokenCreated(address(token));
 
         return address(token);
     } 
@@ -76,7 +76,7 @@ function deployToken (
             totalSupply,
             msg.sender
         );
-        emit ERC20VotesCreated(address(token));
+        emit tokenCreated(address(token));
 
         return address(token);
     }   

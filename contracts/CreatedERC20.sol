@@ -10,7 +10,7 @@ contract CreatedERC20 is ERC20 {
       uint256 totalSupply_,
       address owner_) 
       ERC20(name_, symbol_) {
-        _mint(msg.sender, totalSupply_);
+        _mint(owner_, totalSupply_);
       }
 
 }  
