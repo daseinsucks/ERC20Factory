@@ -9,3 +9,5 @@
    > gas price:           1.504086259 gwei
    > value sent:          0 ETH
    > total cost:          0.006324621051558381 ETH
+
+   https://goerli.etherscan.io/address/0xAf5B8690245087a57128ec9543931574fDfAB4f1
