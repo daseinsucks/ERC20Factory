@@ -1,7 +1,6 @@
 pragma solidity ^0.8.0;
 
 import "./CreatedERC20.sol";
-import "./CreatedERC20Snapshot.sol";
 import "./CreatedERC20Votes.sol";
 
 contract Factory {
@@ -23,10 +22,7 @@ function deployToken (
     if (tokenType == 0) {
    _deployNewERC20(name, symbol, totalSupply_);
 
-} else  if (tokenType == 1) {
-   _deployNewERC20Snapshot(name, symbol, totalSupply_);
-
-} else  if (tokenType == 2) {
+} else if (tokenType == 1) {
    _deployNewERC20Votes(name, symbol, totalSupply_);
 }
 }
@@ -48,22 +44,6 @@ function deployToken (
         return address(token);
     }
 
-
- function _deployNewERC20Snapshot(
-        string calldata name,
-        string calldata symbol,
-        uint256 totalSupply
-    ) internal returns (address) {
-        CreatedERC20Snapshot token = new CreatedERC20Snapshot(
-            name,
-            symbol,
-            totalSupply,
-            msg.sender
-        );
-        emit tokenCreated(address(token));
-
-        return address(token);
-    } 
 
     function _deployNewERC20Votes(
         string calldata name,

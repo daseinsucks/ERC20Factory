@@ -22,8 +22,8 @@
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
-const { alchemyhttp, alchemywss, goerlialchemy, goerlietherscan, rinkebykey, etherscanapi, rinkebyalchemy, goerlimnemonic, goerlihttp, infurawss, rinkebymnemonic, addressIndex, pollingInterval } = require('./secret.json');
-const HDWalletProvider = require("truffle-hdwallet-provider");
+const { rinkebykey, infurawss, polygonkey, polygonwss } = require('./secret.json');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -39,24 +39,29 @@ module.exports = {
     rinkeby: {
       provider: () => new HDWalletProvider(rinkebykey, infurawss),
       network_id: 4,       // Rinkeby's id
-      // websocket: false,
+      //websocket: false,
       confirmations: 0,    // # of confs to wait between deployments. (default: 0)
       timeoutBlocks: 50000,  // # of blocks before a deployment times out  (minimum/default: 50)
       // skipDryRun: false,    // Skip dry run before migrations? (default: false for public nets )
       networkCheckTimeout: 1000000,
       // websockets: true
     },
-    goerli: {
-      provider: () => {
-        return new HDWalletProvider(goerlimnemonic, goerlialchemy)
-      },
-      network_id: '5',
+
+    polygon: {
+      provider: () => new HDWalletProvider(polygonkey, polygonwss),
+      network_id: 137,       // Rinkeby's id
+      websocket: true,
       confirmations: 0,    // # of confs to wait between deployments. (default: 0)
-      timeoutBlocks: 50000,  // # of blocks before a deployment times out  (minimum/default: 50)
-      // skipDryRun: false,    // Skip dry run before migrations? (default: false for public nets )
+      timeoutBlocks: 50000,
+      gasPrice: 470000000000,  // # of blocks before a deployment times out  (minimum/default: 50)
+      //skipDryRun: false,    // Skip dry run before migrations? (default: false for public nets )
       networkCheckTimeout: 1000000,
-       // eslint-disable-line camelcase
+      // websockets: true
     },
+
+
+
+    
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
@@ -115,11 +120,8 @@ module.exports = {
         evmVersion: "istanbul"
        }
     },
-  },
-  plugins: ['truffle-plugin-verify'],
-  api_keys: {
-    etherscan: goerlietherscan
   }
+ 
 
   // Truffle DB is currently disabled by default; to enable it, change enabled:
   // false to enabled: true. The default storage location can also be
